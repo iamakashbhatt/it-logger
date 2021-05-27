@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-
+import LogItems from './LogItems'
 export const Logs = () => {
     const[logs,setLogs] =useState([])
     const [loading,setLoading] =useState(false)
@@ -21,12 +21,12 @@ export const Logs = () => {
     if(loading) {
         return (<h4>Loading ...</h4>)}
     return (
-        <ul className="collectio-with-header">
+        <ul className="collection">
             <li className="collection-header">
                 <h4 className="center">System Logs</h4>
-         </li>
+         </li> 
           {!loading && logs.length === 0 ? (<p className="center"> NO logs to show </p>):(
-              logs.map(log => <li>{log.message}</li>)
+              logs.map(log =><LogItems log={log} key= {log.id}/>)
           )}
         </ul>
     )
